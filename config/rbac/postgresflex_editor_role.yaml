@@ -1,0 +1,27 @@
+# permissions for end users to edit postgresflexes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: postgres-flex-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: postgresflex-editor-role
+rules:
+- apiGroups:
+  - stackit.cloud.my.domain
+  resources:
+  - postgresflexes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - stackit.cloud.my.domain
+  resources:
+  - postgresflexes/status
+  verbs:
+  - get

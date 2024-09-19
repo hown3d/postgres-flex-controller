@@ -1,0 +1,23 @@
+# permissions for end users to view postgresflexes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: postgres-flex-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: postgresflex-viewer-role
+rules:
+- apiGroups:
+  - stackit.cloud.my.domain
+  resources:
+  - postgresflexes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - stackit.cloud.my.domain
+  resources:
+  - postgresflexes/status
+  verbs:
+  - get
